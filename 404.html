@@ -4,21 +4,16 @@
     <meta charset="utf-8">
     <title>Truda Debtors Portal</title>
     <script type="text/javascript">
-      // This script takes the current URL path and converts it into a query parameter,
-      // then redirects to the main index.html.
-      var pathSegmentsToKeep = 1; // Set to 1 if your URL is username.github.io/repo-name/
-
       var l = window.location;
+      // For root domains (trudacloudflow.github.io), we use slice(0, 1)
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.pathname.split('/').slice(0, 1).join('/') + '/?p=/' +
+        l.pathname.slice(1).replace(/&/g, '~and~') +
+        (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
     </script>
   </head>
-  <body>
-    <!-- This can be empty as the redirect happens instantly -->
-  </body>
+  <body></body>
 </html>
