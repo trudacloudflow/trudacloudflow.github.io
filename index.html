@@ -3,22 +3,4 @@
   <link rel="icon" type="image/png" href="/trudaLogo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Truda Debtors Portal</title>
-  
-  <script type="text/javascript">
-    (function(l) {
-      // Check if 'p=' exists anywhere in the search string
-      if (l.search && l.search.indexOf('p=/') !== -1) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&') 
-        }).join('?');
-        
-        // Extract the path after 'p='
-        var path = decoded.split('p=')[1] || '/';
-        
-        window.history.replaceState(null, null, 
-          l.pathname.slice(0, -1) + path + l.hash
-        );
-      }
-    }(window.location))
-  </script>
 </head>
