@@ -6,15 +6,17 @@
   
   <script type="text/javascript">
     (function(l) {
-      if (l.search[1] === 'p') {
+      // Check if 'p=' exists anywhere in the search string
+      if (l.search && l.search.indexOf('p=/') !== -1) {
         var decoded = l.search.slice(1).split('&').map(function(s) { 
           return s.replace(/~and~/g, '&') 
-        }).join('?').slice(3); 
+        }).join('?');
         
-        var finalPath = decoded.startsWith('/') ? decoded : '/' + decoded;
+        // Extract the path after 'p='
+        var path = decoded.split('p=')[1] || '/';
         
         window.history.replaceState(null, null, 
-          l.pathname.slice(0, -1) + finalPath + l.hash
+          l.pathname.slice(0, -1) + path + l.hash
         );
       }
     }(window.location))
